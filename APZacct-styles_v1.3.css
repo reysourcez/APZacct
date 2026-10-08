@@ -1,0 +1,394 @@
+/* APZacct v1.3 - APZacct-styles_v1.3.css */
+:root {
+  --ink: #16261F;
+  --text: #1C2B24;
+  --muted: #5C6D64;
+  --paper: #EEF0EA;
+  --surface: #FFFFFF;
+  --accent: #1F6F5C;
+  --accent-dark: #195A4A;
+  --accent-soft: #DCEAE4;
+  --line: #D8DCD3;
+  --danger: #AD5A3E;
+  --danger-soft: #FBF0EA;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.wizard-shell {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wizard-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px 24px 24px;
+}
+
+.wizard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.exit-link {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 2px;
+  text-decoration: none;
+}
+
+.exit-link:hover { color: var(--danger); }
+
+.progress-track {
+  height: 4px;
+  background: var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.step-content {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-content h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.step-content p.hint {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.option-card:hover { border-color: var(--accent); }
+
+.option-card.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.option-card .glyph {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.option-card .label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.option-card.active .label { color: var(--accent-dark); }
+
+.option-card .sub {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 2px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--surface);
+}
+
+input:focus,
+select:focus,
+.option-card:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.review-row span:first-child { color: var(--muted); }
+.review-row span:last-child { font-weight: 600; color: var(--ink); }
+
+.error-msg {
+  font-size: 13px;
+  color: var(--danger);
+  min-height: 18px;
+  margin: 10px 0 0;
+}
+
+.wizard-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: var(--font-body);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  flex: 1;
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.btn-primary:disabled { background: var(--line); color: var(--muted); cursor: not-allowed; transform: none; }
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-ghost[data-hidden="true"] { visibility: hidden; }
+
+.wizard-footnote {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.wizard-footnote a { color: var(--muted); }
+.wizard-footnote a:hover { color: var(--accent-dark); }
+
+.intro-glyph {
+  font-size: 28px;
+  text-align: center;
+}
+
+.intro-block {
+  text-align: center;
+  padding: 12px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ===== Import Penyata Bank (bank statement OCR review) ===== */
+/* Same card look as .wizard-card, just wider — a review table needs
+   more horizontal room than the 420px single-question wizard does. */
+
+.penyata-shell {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.penyata-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px 24px 24px;
+}
+
+.penyata-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.penyata-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 640px;
+}
+
+.penyata-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 10px 8px;
+  border-bottom: 1.5px solid var(--line);
+  background: var(--paper);
+  white-space: nowrap;
+}
+
+.penyata-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.penyata-table tr:last-child td { border-bottom: none; }
+
+.penyata-table .cell-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text);
+  background: transparent;
+}
+
+.penyata-table .cell-input:hover,
+.penyata-table .cell-input:focus {
+  border-color: var(--line);
+  background: var(--surface);
+  outline: none;
+}
+
+.penyata-table .cell-perkara { min-width: 180px; }
+.penyata-table .cell-amaun { width: 90px; text-align: right; }
+
+/* a row Gemini's own running-balance math flagged as inconsistent —
+   pre-unchecked by APZacct-penyata-bank_v1.3.js, tinted so it's obvious why */
+.penyata-table tr.row-amaran td {
+  background: var(--danger-soft);
+}
+
+.penyata-table tr.row-amaran .cell-input {
+  color: var(--danger);
+}
+
+/* a row the person has unchecked — won't be posted */
+.penyata-table tr.row-dikecualikan {
+  opacity: 0.45;
+}
+
+/* ===== Rekonsiliasi Bank (bank reconciliation) ===== */
+/* Reuses .penyata-shell/.penyata-card/.penyata-table above — this is
+   just the summary banner and sub-section headings that page adds. */
+
+.penyata-subhead {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+  margin: 18px 0 4px;
+}
+
+.baki-ringkasan {
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 4px;
+}
+
+.baki-ringkasan .status {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.baki-ringkasan.seimbang { border-color: var(--accent); background: var(--accent-soft); }
+.baki-ringkasan.seimbang .status { color: var(--accent-dark); }
+
+.baki-ringkasan.tidak-seimbang { border-color: var(--danger); background: var(--danger-soft); }
+.baki-ringkasan.tidak-seimbang .status { color: var(--danger); }
+
+/* ===== APZacct v1.3 ===== */
+.ver { font-size: 11px; color: var(--muted); margin: 0 2px; }
